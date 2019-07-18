@@ -74,7 +74,7 @@ for container_name in "${!container_ports[@]}"; do
         cat ${ORIGINAL_DIR}/uwsgi_pass.conf.tmpl \
             | envsubst '${container_name} ${container_port}' \
             > ${TEMPLATES_ENABLED_DIR}/${container_name}_uwsgi_pass.conf
- 
+
         # Prepare to include the generated `uwsgi_pass` config. and no `proxy_pass` config.
         include_proxy_pass=''
         include_uwsgi_pass="include ${TEMPLATES_ENABLED_DIR}/${container_name}_uwsgi_pass.conf;"
